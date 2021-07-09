@@ -84,7 +84,6 @@ void rb_tree_repair_remove(rb_tree_t *removed, rb_tree_t **root)
 
 	/* CASE 3 */
 	rotate_parent(removed, sibling, root);
-	return;
 }
 
 /**
@@ -99,42 +98,29 @@ void rotate_parent(rb_tree_t *rem, rb_tree_t *sib, rb_tree_t **root)
 	rb_tree_t *close_neph, *far_neph;
 
 	if (rem == rem->parent->left)
-	{
-		close_neph = sib->left;
-		far_neph = sib->right;
-	}
+		close_neph = sib->left, far_neph = sib->right;
 	else
-	{
-		far_neph = sib->left;
-		close_neph = sib->right;
-	}
+		far_neph = sib->left, close_neph = sib->right;
 	/* CASE 1 */
 	if (close_neph && close_neph->color == RED)
 	{
-		sib->color = RED;
-		close_neph->color = BLACK;
+		sib->color = RED, close_neph->color = BLACK;
 		if (close_neph == sib->left)
 			rb_tree_rotate_right(sib);
 		else
 			rb_tree_rotate_left(sib);
 		sib = get_sibling(rem);
 		if (rem == rem->parent->left)
-		{
-			close_neph = sib->left;
-			far_neph = sib->right;
-		}
+			close_neph = sib->left, far_neph = sib->right;
 		else
-		{
-			far_neph = sib->left;
-			close_neph = sib->right;
-		}
+			far_neph = sib->left, close_neph = sib->right;
 	}
 	/* CASE 2 */
 	far_neph->color = BLACK;
 	tmp = sib->color;
 	sib->color = sib->parent->color;
 	sib->parent->color = tmp;
-	if(rem->parent == (*root))
+	if (rem->parent == (*root))
 		(*root) = sib;
 	if (rem == rem->parent->left)
 		rb_tree_rotate_left(rem->parent);
@@ -188,6 +174,6 @@ rb_tree_t *find_node(rb_tree_t *tree, int value)
 		return (tree);
 
 	if (tree->n > value)
-		return find_node(tree->left, value);
-	return find_node(tree->right, value);
+		return (find_node(tree->left, value))
+	return (find_node(tree->right, value));
 }

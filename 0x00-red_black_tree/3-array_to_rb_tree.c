@@ -8,14 +8,14 @@
  */
 rb_tree_t *array_to_rb_tree(int *array, size_t size)
 {
-    size_t i;
-    rb_tree_t *tree = NULL;
+	size_t i;
+	rb_tree_t *tree = NULL;
 
-    if (!array)
-        return (NULL);
+	if (!array)
+		return (NULL);
 
-    for (i = 0; i < size; i++)
-        rb_tree_insert(&tree, array[i]);
+	for (i = 0; i < size; i++)
+		rb_tree_insert(&tree, array[i]);
 
-    return (tree);
+	return (tree);
 }

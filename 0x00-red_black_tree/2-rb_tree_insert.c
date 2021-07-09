@@ -1,5 +1,6 @@
 #include "rb_trees.h"
 #include <stdlib.h>
+#include "3-array_to_rb_tree.c"
 
 /**
  * rb_tree_insert - inserts rb_tree_t node
@@ -19,39 +20,7 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 	rb_tree_repair(node, tree);
 	return (node);
 }
-/**
- * bst_insert - inserts a node into a rb tree
- * @tree: root of tree
- * @value: value new node will have once inserted
- * Return: new node
- */
-rb_tree_t *bst_insert(rb_tree_t *tree, int value)
-{
-	if (tree == NULL)
-	{
-		tree = rb_tree_node(tree, value, BLACK);
-		return (tree);
-	}
 
-	if (value < tree->n)
-	{
-		/**
-		 * if there's a left child, then we recurse down that left child. and once
-		 * there is no left child, THEN we insert left.
-		 */
-		if (tree->left == NULL)
-			return (rb_tree_insert_left(tree, value));
-		return (bst_insert(tree->left, value));
-	}
-	else if (value > tree->n)
-	{
-		if (tree->right == NULL)
-			return (rb_tree_insert_right(tree, value));
-		return (bst_insert(tree->right, value));
-	}
-
-	return (NULL);
-}
 /**
  * rb_tree_insert_left - inserts a node as the left-child of another node
  * @parent: pointer to the parent node of the node to create

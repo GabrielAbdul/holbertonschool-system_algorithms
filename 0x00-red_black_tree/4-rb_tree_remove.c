@@ -1,4 +1,5 @@
 #include "rb_trees.h"
+#include "2-rb_tree_insert.c"
 
 /**
  * rb_tree_remove - removes a node from a Red-Black tree

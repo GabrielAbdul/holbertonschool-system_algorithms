@@ -20,8 +20,7 @@
 typedef enum rb_color_e
 {
 	RED = 0,
-	BLACK,
-	DOUBLE_BLACK
+	BLACK 
 } rb_color_t;
 
 /**
@@ -63,13 +62,5 @@ void rotate_parent(rb_tree_t *rem, rb_tree_t *sib, rb_tree_t **root);
 rb_tree_t *get_sibling(rb_tree_t *node);
 rb_tree_t *find_replacement(rb_tree_t *node);
 rb_tree_t *find_node(rb_tree_t *tree, int value);
-/*void rb_tree_repair(rb_tree_t **root, rb_tree_t *tree);*/
-/*rb_tree_t *rb_tree_insert_right(rb_tree_t **root, rb_tree_t *parent, int value);*/
-/*rb_tree_t *rb_tree_insert_left(rb_tree_t **root, rb_tree_t *parent, int value);*/
-
-
-
-
-
 
 #endif /* RB_TREES_H */

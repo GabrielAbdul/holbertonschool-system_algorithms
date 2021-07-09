@@ -174,6 +174,6 @@ rb_tree_t *find_node(rb_tree_t *tree, int value)
 		return (tree);
 
 	if (tree->n > value)
-		return (find_node(tree->left, value))
+		return (find_node(tree->left, value));
 	return (find_node(tree->right, value));
 }

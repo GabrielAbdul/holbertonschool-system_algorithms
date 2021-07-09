@@ -5,7 +5,7 @@
  * rb_tree_insert - inserts rb_tree_t node
  * @tree: tree
  * @value: value
- * return: inserted node
+ * Return: inserted node
  */
 rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 {
@@ -20,7 +20,7 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 	return (node);
 }
 /**
- * rb_tree_insert - inserts a node into a rb tree
+ * bst_insert - inserts a node into a rb tree
  * @tree: root of tree
  * @value: value new node will have once inserted
  * Return: new node
@@ -45,16 +45,11 @@ rb_tree_t *bst_insert(rb_tree_t *tree, int value)
 	}
 	else if (value > tree->n)
 	{
-		/**
-		 * if (tree->right) then there's another thing to compare so we'll recurse
-		 * down to that node by going rb_tree_insert(tree->right, value), else, then
-		 * we do insertion.
- 		 */
 		if (tree->right == NULL)
 			return (rb_tree_insert_right(tree, value));
 		return (bst_insert(tree->right, value));
 	}
-	
+
 	return (NULL);
 }
 /**
@@ -109,7 +104,7 @@ rb_tree_t *rb_tree_insert_right(rb_tree_t *parent, int value)
 }
 /**
  * rb_tree_rotate_left - performs left rotation around node for an rb tree
- * @node: node to rotate around
+ * @tree: node to rotate around
  */
 void rb_tree_rotate_left(rb_tree_t *tree)
 {
@@ -151,7 +146,7 @@ void rb_tree_rotate_right(rb_tree_t *tree)
 
 	if (tree->left != NULL)
 		tree->left->parent = tree;
-	
+
 	if (parent)
 	{
 		if (tree == parent->left)
@@ -163,10 +158,15 @@ void rb_tree_rotate_right(rb_tree_t *tree)
 	node->parent = parent;
 }
 
+/**
+ * rb_tree_repair - repairs rb tree
+ * @tree: node
+ * @root: root
+ */
 void rb_tree_repair(rb_tree_t *tree, rb_tree_t **root)
 {
 	rb_tree_t *uncle, *grandparent;
-	
+
 	/* CASE 1 and 2 */
 	if (tree->parent == NULL)
 	{
@@ -174,7 +174,7 @@ void rb_tree_repair(rb_tree_t *tree, rb_tree_t **root)
 		*root = tree;
 		return;
 	}
-	
+
 	if (tree->parent->color == BLACK)
 		return;
 
@@ -213,14 +213,17 @@ void rb_tree_repair(rb_tree_t *tree, rb_tree_t **root)
  * @tree: pointer to tree
  * @p: parent of tree
  * @gp: grandparent of tree
+ * @root: root of tree
  */
-void rb_tree_insert_uncle_black(rb_tree_t *tree, rb_tree_t* p, rb_tree_t *gp, rb_tree_t **root)
+void rb_tree_insert_uncle_black(rb_tree_t *tree, rb_tree_t *p, rb_tree_t *gp, rb_tree_t **root)
 {
 	if (tree == p->right && p == gp->left)
 	{
 		rb_tree_rotate_left(p);
 		tree = tree->left;
-	} else if (tree == p->left && p == gp->right) {
+	}
+	else if (tree == p->left && p == gp->right)
+	{
 		rb_tree_rotate_right(p);
 		tree = tree->right;
 	}

@@ -20,7 +20,7 @@
 typedef enum rb_color_e
 {
 	RED = 0,
-	BLACK 
+	BLACK
 } rb_color_t;
 
 /**

@@ -4,15 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
-graph_t *graph_create(void);
-vertex_t *graph_add_vertex(graph_t *graph, const char *str);
-int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type);
-void graph_delete(graph_t *graph);
-size_t depth_first_traverse(const graph_t *graph, void (*action)(const vertex_t *v, size_t depth));
-size_t breadth_first_traverse(const graph_t *graph, void (*action)(const vertex_t *v, size_t depth));
-
 /**
  * enum edge_type_e - Enumerates the different types of
  * connection between two vertices
@@ -75,5 +66,12 @@ typedef struct graph_s
     size_t      nb_vertices;
     vertex_t    *vertices;
 } graph_t;
+
+graph_t *graph_create(void);
+vertex_t *graph_add_vertex(graph_t *graph, const char *str);
+int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type);
+void graph_delete(graph_t *graph);
+size_t depth_first_traverse(const graph_t *graph, void (*action)(const vertex_t *v, size_t depth));
+size_t breadth_first_traverse(const graph_t *graph, void (*action)(const vertex_t *v, size_t depth));
 
 #endif /* GRAPHS_H */

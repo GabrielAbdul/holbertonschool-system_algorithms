@@ -8,9 +8,7 @@
  */
 vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 {
-	size_t j;
 	vertex_t *vertex, *v;
-	static size_t i;
 
 	if (!graph || !str)
 		return (NULL);
@@ -46,7 +44,7 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 	else
 	{
 		/* increment our vertex index */
-		vertex->index = v->index++;
+		vertex->index = v->index + 1;
 		/* add it to be the next vertex in list of vertices */
 		v->next = vertex;
 	}
@@ -58,7 +56,7 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
  * @str: string to copy over
  * Return: vertex
  */
-vertex_t graph_create_vertex(const char *str)
+vertex_t *graph_create_vertex(const char *str)
 {
 	vertex_t *node = malloc(sizeof(vertex_t));
 

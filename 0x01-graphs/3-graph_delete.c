@@ -7,7 +7,7 @@
 void graph_delete(graph_t *graph)
 {
 	vertex_t *v, tmp;
-	edge_t *e, *next;
+	edge_t *e, *node;
 
 	if (graph == NULL)
 		exit(EXIT_FAILURE);
@@ -25,13 +25,17 @@ void graph_delete(graph_t *graph)
 				while (e)
 				{
 					if (e->next)
-						tmp = e->next;
-					free(e)
-					e = tmp;
+					{
+						node = e;
+						e = e->next;
+						free(node);
+					} else {
+						free(e);
+					}
 				}
 			}
 			free(v->content);
-			free(v)
+			free(v);
 		}
 		free(graph->vertices);
 	}

@@ -23,6 +23,7 @@ int add_edges_to_vertices(vertex_t *vsrc, vertex_t *vdest)
 
 	edge->dest = vdest;
 	edge->next = NULL;
+	*edgep = edge;
 
 	vsrc->nb_edges += 1;
 
@@ -78,5 +79,5 @@ int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_
 
 	add_edges_to_vertices(vsrc, vdest);
 	add_edges_to_vertices(vdest, vsrc);
-	return(1);
+	return (1);
 }

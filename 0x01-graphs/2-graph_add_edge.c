@@ -10,8 +10,8 @@ int add_edges_to_vertices(vertex_t *vsrc, vertex_t *vdest)
 {
 	edge_t *edge, *edgep;
 
-	for (p = &src->edges; *p; p = &(*p)->next)
-		if ((*p)->dest == dest)
+	for (edgep = &vsrc->edges; *edgep; edgep = &(*edgep)->next)
+		if ((*edgep)->dest == vdest)
 			return (0);
 
 	if (vsrc == NULL || vdest == NULL)
@@ -53,7 +53,7 @@ int retrieve_vertices(graph_t *graph, vertex_t **vsrc, vertex_t **vdest, const c
 			*vdest = v;
 		v = v->next;
 	}
-	return ((*v1 == NULL || *v2 == NULL) ? 0 : 1);
+	return ((*vsrc == NULL || *vdest == NULL) ? 0 : 1);
 }
 /**
  * graph_add_edge - adds an edge between two vertices to an existing graph

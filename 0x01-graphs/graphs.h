@@ -68,6 +68,8 @@ typedef struct graph_s
 	vertex_t    *vertices;
 } graph_t;
 
+int add_edges_to_vertices(vertex_t *vsrc, vertex_t *vdest);
+int retrieve_vertices(graph_t *graph, vertex_t **vsrc, vertex_t **vdest, const char *vsrc_content, const char *vdest_content);
 vertex_t *graph_create_vertex(const char *str);
 void graph_display(const graph_t *graph);
 graph_t *graph_create(void);

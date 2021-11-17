@@ -8,7 +8,7 @@
  */
 int add_edges_to_vertices(vertex_t *vsrc, vertex_t *vdest)
 {
-	edge_t *edge, *edgep;
+	edge_t *edge, **edgep;
 
 	for (edgep = &vsrc->edges; *edgep; edgep = &(*edgep)->next)
 		if ((*edgep)->dest == vdest)
@@ -65,7 +65,7 @@ int retrieve_vertices(graph_t *graph, vertex_t **vsrc, vertex_t **vdest, const c
  */
 int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type)
 {
-	vertex_t **vsrc = NULL, **vdest = NULL;
+	vertex_t *vsrc = NULL, *vdest = NULL;
 
 	if (!graph || !src || !dest || type > BIDIRECTIONAL)
 		return (0);
@@ -74,9 +74,9 @@ int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_
 		return (0);
 
 	if (type == UNIDIRECTIONAL)
-		return (add_edges_to_vertices(vsrc, vdest, type));
+		return (add_edges_to_vertices(vsrc, vdest));
 
 	add_edges_to_vertices(vsrc, vdest);
 	add_edges_to_vertices(vdest, vsrc);
-	reutrn(1);
+	return(1);
 }

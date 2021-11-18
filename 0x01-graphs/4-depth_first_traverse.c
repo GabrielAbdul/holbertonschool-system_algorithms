@@ -13,7 +13,7 @@
 size_t dft_traversal(const vertex_t *v, action_t action, int *grey_nodes, size_t depth)
 {
 	edge_t *edge;
-	size_t current_depth, total_depth;
+	size_t current_depth, total_depth = 0;
 
 	/* if we're at grey node get outta there */
 	if (grey_nodes[v->index] == GREY)
@@ -31,6 +31,7 @@ size_t dft_traversal(const vertex_t *v, action_t action, int *grey_nodes, size_t
 	{
 		current_depth = dft_traversal(edge->dest, action, grey_nodes, depth + 1);
 		total_depth = current_depth > total_depth ? current_depth : total_depth;
+		edge = edge->next;
 	}
 
 	return (total_depth);
@@ -49,11 +50,11 @@ size_t depth_first_traverse(const graph_t *graph, void (*action)(const vertex_t 
 	if (graph && graph->vertices)
 	{
 		/* init int [] to store seen nodes */
-		grey_nodes = calloc(sizeof(int));
+		grey_nodes = calloc(graph->nb_vertices, sizeof(int));
 
 		if (grey_nodes == NULL)
 			return (0);
-		depth = dfs_traversal(graph->vertices, action, grey_nodes, depth);
+		depth = dft_traversal(graph->vertices, action, grey_nodes, depth);
 		free(grey_nodes);
 	}
 

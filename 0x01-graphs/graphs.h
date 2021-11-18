@@ -23,6 +23,7 @@ typedef enum edge_type_e
 
 /* Define the structure temporarily for usage in the edge_t */
 typedef struct vertex_s vertex_t;
+typedef void (*action_t)(const vertex_t *, size_t);
 
 /**
  * struct edge_s - Node in the linked list of edges for a given vertex

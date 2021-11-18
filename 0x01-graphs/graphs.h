@@ -1,6 +1,9 @@
 #ifndef GRAPHS_H
 #define GRAPHS_H
 
+#define GREY 1
+#define WHITE 0
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -68,6 +71,7 @@ typedef struct graph_s
 	vertex_t    *vertices;
 } graph_t;
 
+size_t dft_traversal(const vertex_t *v, action_t action, int *grey_nodes, size_t depth);
 int add_edges_to_vertices(vertex_t *vsrc, vertex_t *vdest);
 int retrieve_vertices(graph_t *graph, vertex_t **vsrc, vertex_t **vdest, const char *vsrc_content, const char *vdest_content);
 vertex_t *graph_create_vertex(const char *str);

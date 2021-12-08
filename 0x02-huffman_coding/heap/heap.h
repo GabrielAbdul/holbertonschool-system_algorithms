@@ -33,7 +33,12 @@ typedef struct heap_s
 	binary_tree_node_t *root;
 } heap_t;
 
-/* task prototypes */
+/* task function prototypes */
 heap_t *heap_create(int (*data_cmp)(void *, void *));
 binary_tree_node_t *binary_tree_node(binary_tree_node_t *parent, void *data);
+binary_tree_node_t *heap_insert(heap_t *heap, void *data);
+void heap_delete(heap_t *heap, void (*free_data)(void *));
+
+/* custom function prototypes */
+void binary_tree_delete(binary_tree_node_t *root, void (*free_data)(void *));
 #endif /* HEAP_H */

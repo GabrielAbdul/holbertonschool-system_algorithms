@@ -5,7 +5,7 @@
  * @node1: node 1
  * @node2: node 2
  */
-void swap(binary_tree_node_t *n1, binary_tree_node_t *n2)
+void swap(binary_tree_node_t *node1, binary_tree_node_t *node2)
 {
 	void *temp;
 
@@ -30,7 +30,7 @@ void sift_down(heap_t *heap)
 	{
 		largest = node->left;
 		if (node->right && heap->data_cmp(node->data, node->right->data) >= 0
-		    && heap->data_cmp(node->right->data, node->left->data) < 0)
+			&& heap->data_cmp(node->right->data, node->left->data) < 0)
 			swap(node->right, node), largest = node->right;
 		else if (heap->data_cmp(node->left->data, node->data) <= 0)
 			swap(node->left, node);
@@ -52,15 +52,15 @@ void *heap_extract(heap_t *heap)
 		return (NULL);
 	data = heap->root->data;
 
-    /* get last node in tree */
+	/* get last node in tree */
 	bottom_node = retrieve_nth_node(heap->root, heap->size);
 
-    /* replace root node data with bottom node data */
+	/* replace root node data with bottom node data */
 	heap->root->data = bottom_node->data;
 
 	if (bottom_node->parent)
 	{
-        /* remove the bottom node from the tree */
+		/* remove the bottom node from the tree */
 		if (bottom_node->parent->left == bottom_node)
 			bottom_node->parent->left = NULL;
 		else
@@ -69,10 +69,10 @@ void *heap_extract(heap_t *heap)
 	else
 		heap->root = NULL;
 
-    /* delete bottom node from memory */
+	/* delete bottom node from memory */
 	free(bottom_node);
 	heap->size -= 1;
-    /* fix heap */
+	/* fix heap */
 	sift_down(heap);
 	return (data);
 }

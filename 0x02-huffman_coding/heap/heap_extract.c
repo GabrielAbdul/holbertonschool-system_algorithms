@@ -53,7 +53,7 @@ void *heap_extract(heap_t *heap)
 	data = heap->root->data;
 
     /* get last node in tree */
-	bottom_node = retreive_nth_node(heap->root, heap->size);
+	bottom_node = retrieve_nth_node(heap->root, heap->size);
 
     /* replace root node data with bottom node data */
 	heap->root->data = bottom_node->data;

@@ -2,10 +2,10 @@
 
 /**
  * swap - swap two nodes
- * @node1: node 1
- * @node2: node 2
+ * @n1: node 1
+ * @n2: node 2
  */
-void swap(binary_tree_node_t *node1, binary_tree_node_t *node2)
+void swap(binary_tree_node_t *n1, binary_tree_node_t *n2)
 {
 	void *temp;
 

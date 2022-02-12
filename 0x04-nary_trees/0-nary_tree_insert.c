@@ -10,7 +10,7 @@ nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str)
 {
     nary_tree_t *node;
 
-    node = malloc(sizeof(nary_tree_t *));
+    node = malloc(sizeof(nary_tree_t));
 
     if (node == NULL)
         return (NULL);

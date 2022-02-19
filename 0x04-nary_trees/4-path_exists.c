@@ -44,7 +44,7 @@ int path_exists_recursive(nary_tree_t const *root, char const * const *path, int
         return (0);
 
     node = root;
-    while (node)
+    while (node && path[level])
     {
         /* check this nodes content with corresponding path */
         if (strcmp(node->content, path[level]) == 0)

@@ -1,6 +1,8 @@
 #ifndef NARY_TREES_H
 #define NARY_TREES_H
 
+#define zero_depth 0
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,5 +31,5 @@ void nary_tree_delete(nary_tree_t *tree);
 size_t nary_tree_traverse(nary_tree_t const *root, void (*action)(nary_tree_t const *node, size_t depth));
 size_t nary_tree_diameter(nary_tree_t const *root);
 int path_exists(nary_tree_t const *root, char const * const *path);
-
+int path_exists_recursive(nary_tree_t const *root, char const * const *path, int level);
 #endif /* NARY_TREES_H */

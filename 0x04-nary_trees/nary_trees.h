@@ -2,6 +2,7 @@
 #define NARY_TREES_H
 
 #define zero_depth 0
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,10 +26,11 @@ typedef struct nary_tree_s
 	struct nary_tree_s  *next;
 } nary_tree_t;
 
-
 nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str);
 void nary_tree_delete(nary_tree_t *tree);
 size_t nary_tree_traverse(nary_tree_t const *root, void (*action)(nary_tree_t const *node, size_t depth));
+size_t helper(nary_tree_t const *root,
+	void (*action)(nary_tree_t const *node, size_t depth), size_t depth);
 size_t nary_tree_diameter(nary_tree_t const *root);
 int path_exists(nary_tree_t const *root, char const * const *path);
 int path_exists_recursive(nary_tree_t const *root, char const * const *path, int level);

@@ -7,8 +7,19 @@
  */
 size_t nary_tree_diameter(nary_tree_t const *root)
 {
-    if (root == NULL)
-        return (0);
+	size_t diameter = 0;
+	nary_tree_t const *node;
 
-    return (1);
+	if (root == NULL)
+		return (0);
+
+	node = root;
+	while (node)
+	{
+		if (node->children)
+			diameter++;
+		node = node->next;
+		diameter++;
+	}
+	return (diameter);
 }

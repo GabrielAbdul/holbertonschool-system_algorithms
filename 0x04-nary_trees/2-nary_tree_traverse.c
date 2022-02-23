@@ -11,7 +11,7 @@ size_t nary_tree_traverse(nary_tree_t const *root,
 {
 	if (root == NULL || action == NULL)
 		return (0);
-		
+
 	return (helper(root, action, 0));
 }
 
